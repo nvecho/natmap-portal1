@@ -1,0 +1,38 @@
+{
+  "name": "natmap-portal1",
+  "private": true,
+  "cloudflare": {
+    "bindings": {
+      "KV": {
+        "description": "KV 命名空间，存储服务列表与上报数据。**部署时自动创建并绑定**，无需手动准备。"
+      },
+      "ADMIN_PASSWORD": {
+        "description": "**必填**。管理页密码。留空或未设 = 管理功能禁用（管理页返回 403），无法创建任何服务。"
+      },
+      "INDEX_PATH": {
+        "description": "目录页路径，默认 `user`。**建议改成随机串**，默认值容易被扫描器猜到。"
+      },
+      "ADMIN_PATH": {
+        "description": "管理页路径，默认 `admin`。**建议改成随机串**。不能与 INDEX_PATH 相同，相同则服务返回 500。"
+      },
+      "INDEX_USERNAME": {
+        "description": "目录页用户名，默认 `user`，与 INDEX_PASSWORD 配套使用。"
+      },
+      "ADMIN_USERNAME": {
+        "description": "管理页用户名，默认 `admin`，与 ADMIN_PASSWORD 配套使用。"
+      },
+      "MAX_LOGIN_ATTEMPTS": {
+        "description": "同 IP 连续登录失败多少次后锁定，默认 `5`，有效范围 1-100，超出被静默钳制。"
+      },
+      "LOCKOUT_SECONDS": {
+        "description": "登录锁定时长（秒），默认 `300`，有效范围 10-86400，超出被静默钳制。"
+      },
+      "TIMEZONE": {
+        "description": "页面时间显示时区，默认 `Asia/Shanghai`。非法值静默回退默认，不报错。"
+      },
+      "REPORT_RATE_LIMIT": {
+        "description": "每 IP 每 10 秒最多上报次数，默认 `30`，有效范围 0-10000。`0` 表示关闭限流。"
+      }
+    }
+  }
+}
